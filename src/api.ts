@@ -1,4 +1,5 @@
-import { InstanceStatus, UDPHelper, SharedUdpSocket, SharedUdpSocketEvents, CompanionVariableValues } from '@companion-module/base'
+import { InstanceStatus, UDPHelper, CompanionVariableValues } from '@companion-module/base'
+// import { SharedUdpSocket, SharedUdpSocketEvents } from '@companion-module/base'
 import type { evolutionInstance } from './index.js'
 
 export function initConnection(self: evolutionInstance): void {
@@ -16,7 +17,7 @@ export function initConnection(self: evolutionInstance): void {
 		self.log('info', `[Sennheiser EW][${self.config.host}] Connecting via UDP Port ${self.config.port}`)
 		self.updateStatus(InstanceStatus.Connecting, 'Connecting') // Set status to Connecting
 
-		self._socket = self.createSharedUdpSocket('udp4', responseSocketEvents)
+		// self._socket = self.createSharedUdpSocket('udp4', responseSocketEvents)
 
 		self._socket = new UDPHelper(self.config.host, parseInt(self.config.port), { bind_port: parseInt(self.config.port) })
 
