@@ -12,10 +12,12 @@ export class evolutionInstance extends InstanceBase<ModuleConfig> {
 	public _muteState: boolean
 	public _deviceConfig: any
 	public _deviceConfigIndex: number
+	public device: any
 
 	public _socket: any
 
 	public _pushInterval: NodeJS.Timeout | undefined
+	public responseTimeout?: NodeJS.Timeout
 
 	constructor(internal: unknown) {
 		super(internal)
@@ -27,6 +29,10 @@ export class evolutionInstance extends InstanceBase<ModuleConfig> {
 
 	async init(config: ModuleConfig): Promise<void> {
 		this.config = config
+
+		this.device = {
+			deviceConnected: false,
+		}
 
 		this.updateStatus(InstanceStatus.Ok)
 

@@ -156,6 +156,13 @@
   dependencies:
     undici-types "~6.19.2"
 
+"@types/pngjs@^6.0.1":
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/@types/pngjs/-/pngjs-6.0.5.tgz#6dec2f7eb8284543ca4e423f3c09b119fa939ea3"
+  integrity sha512-0k5eKfrA83JOZPppLtS2C7OUtyNAl2wKNxfyYl9Q5g9lPkgBl/9hNyAu6HuEH2J4XmIv2znEpkDd0SaZVxW6iQ==
+  dependencies:
+    "@types/node" "*"
+
 "@webassemblyjs/ast@1.12.1", "@webassemblyjs/ast@^1.12.1":
   version "1.12.1"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.12.1.tgz#bb16a0e8b1914f979f45864c23819cc3e3f0d4bb"
@@ -485,6 +492,14 @@ commander@~12.1.0:
   version "12.1.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-12.1.0.tgz#01423b36f501259fdaac4d0e4d60c96c991585d3"
   integrity sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==
+
+companion-module-utils@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/companion-module-utils/-/companion-module-utils-0.5.0.tgz#ffc2a9b7b78eb09fec05d4595befdfc946de130f"
+  integrity sha512-5bWcJ/ozTmD29Tq07fdd7ilq+kIUBsTmlGuE9BVraiBHXGFD3Fw7sE5VaVvim9LkYvtFuChpssgx5bO31BdezA==
+  dependencies:
+    "@types/pngjs" "^6.0.1"
+    pngjs "^7.0.0"
 
 cross-spawn@^7.0.0, cross-spawn@^7.0.3:
   version "7.0.6"
@@ -1201,6 +1216,11 @@ pkg-dir@^4.2.0:
   integrity sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==
   dependencies:
     find-up "^4.0.0"
+
+pngjs@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-7.0.0.tgz#a8b7446020ebbc6ac739db6c5415a65d17090e26"
+  integrity sha512-LKWqWJRhstyYo9pGvgor/ivk2w94eSjE3RGVuzLGlr3NmD8bf7RcYGze1mNdEHRP6TRP6rMuDHk5t44hnTRyow==
 
 prettier-linter-helpers@^1.0.0:
   version "1.0.0"

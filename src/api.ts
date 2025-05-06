@@ -22,12 +22,17 @@ export function initConnection(self: evolutionInstance): void {
 		self._socket = new UDPHelper(self.config.host, parseInt(self.config.port), { bind_port: parseInt(self.config.port) })
 
 		self._socket.on('error', (err: any) => {
+			self.device.deviceConnected = false
 			self.updateStatus(InstanceStatus.ConnectionFailure, err.message)
 			self.log('error', 'Network error: ' + err.message)
 		})
 
 		// If we get data, thing should be good
 		self._socket.on('listening', () => {
+			self.device.deviceConnected = true
+			if (self.config.verbose) {
+				self.log('debug', `[Sennheiser EW][${self.config.host}] connected.`)
+			}
 			self.updateStatus(InstanceStatus.Ok)
 			startStatusSubscription(self)
 		})
@@ -49,6 +54,20 @@ export function sendCommand(self: evolutionInstance, command: string): void {
 	}
 
 	self._socket.send(`${command}\r`, self.config.host)
+	if (self.responseTimeout) {
+		clearTimeout(self.responseTimeout)
+	}
+	self.responseTimeout = setTimeout(() => {
+		self.device.deviceConnected = false
+		self.checkFeedbacks()
+		if (self.config.verbose) {
+			self.log('debug', `[Sennheiser EW][${self.config.host}] connection timeout!.`)
+		}
+		self.updateStatus(
+			InstanceStatus.Disconnected,
+			'Device not responding - make sure its connected and turned on.',
+		)
+	}, 2000)
 }
 
 export function startStatusSubscription(self: evolutionInstance): void {
