@@ -23,7 +23,10 @@ export class evolutionInstance extends InstanceBase<ModuleConfig> {
 		super(internal)
 
 		this._muteState = false
-		this._deviceConfig = {}
+		this._deviceConfig = {
+			af_peak: null,
+			name: null,
+		}
 		this._deviceConfigIndex = 0
 	}
 

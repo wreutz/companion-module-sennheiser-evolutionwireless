@@ -21,6 +21,13 @@ export function UpdateFeedbacks(self: evolutionInstance): void {
 			type: 'advanced',
 			options: [],
 			callback: async (feedback) => {
+				// dev helper overwrite connected status
+				self.device.deviceConnected = true
+
+				let out = {
+					text: '',
+				}
+
 				if (feedback.image) {
 					const commonIconProps: OptionsIcon = {
 						width: feedback.image.width,
@@ -28,8 +35,9 @@ export function UpdateFeedbacks(self: evolutionInstance): void {
 						type: 'custom',
 					}
 					if (self.device.deviceConnected) {
+						out.text += self._deviceConfig.name !== null ? self._deviceConfig.name.trim() + '\\n' : 'Unknown\\n'
 						return {
-							text: '\\nCONNECTED',
+							text: out.text,
 						}
 					} else {
 						const warningProps: OptionsIcon = {
