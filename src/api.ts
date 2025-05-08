@@ -112,7 +112,13 @@ export function processData(self: evolutionInstance, message: string): void {
 			}
 			variableObj['msg'] = line.replace('Msg', '').trim()
 		} else if (line.startsWith('Name')) {
-			self._deviceConfig.name = lineSplit[1].trim()
+			if (lineSplit.length > 2) {
+				let tmpSplit = lineSplit
+				tmpSplit.shift()
+				self._deviceConfig.name = tmpSplit.join(' ')
+			} else {
+				self._deviceConfig.name = lineSplit[1].trim()
+			}
 			variableObj['name'] = self._deviceConfig.name
 		} else if (line.startsWith('Frequency')) {
 			self._deviceConfig.frequencyRaw = lineSplit[1].trim()
@@ -176,6 +182,6 @@ export function processData(self: evolutionInstance, message: string): void {
 			//todo
 		}
 	}
-
+	self.checkFeedbacks()
 	self.setVariableValues(variableObj)
 }
