@@ -105,7 +105,7 @@ export function processData(self: evolutionInstance, message: string): void {
 					variableObj['af_peak'] = '1'
 				} else {
 					self._deviceConfig.af_peak = false
-					variableObj['af_peak'] = 'test'
+					variableObj['af_peak'] = '0'
 				}
 			} else if (self.config.deviceType === 'EM') {
 				//todo

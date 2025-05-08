@@ -25,7 +25,17 @@ export class evolutionInstance extends InstanceBase<ModuleConfig> {
 		this._muteState = false
 		this._deviceConfig = {
 			af_peak: null,
+			equalizer: {
+				enabled: false,
+				low: null,
+				lowMid: null,
+				mid: null,
+				midHigh: null,
+				high: null
+			},
+			frequency: null,
 			name: null,
+			sensitivity: null,
 		}
 		this._deviceConfigIndex = 0
 	}

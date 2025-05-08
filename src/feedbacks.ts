@@ -25,8 +25,8 @@ export function UpdateFeedbacks(self: evolutionInstance): void {
 			type: 'advanced',
 			options: [],
 			callback: async (feedback) => {
-				// // dev helper overwrite connected status
-				// self.device.deviceConnected = true
+				// dev helper overwrite connected status
+				self.device.deviceConnected = true
 
 				let out = {
 					text: '',
@@ -40,8 +40,8 @@ export function UpdateFeedbacks(self: evolutionInstance): void {
 					}
 					if (self.device.deviceConnected) {
 						out.text += self._deviceConfig.name !== null ? self._deviceConfig.name.trim() + '\\n' : 'Unknown\\n'
-						out.text += self._deviceConfig.frequency + ' MHz\\n'
-						out.text += self._deviceConfig.mode + '\\n'
+						out.text += self._deviceConfig.frequency !== null ? self._deviceConfig.frequency + ' MHz\\n' : '---.--- MHz\\n'
+						out.text += self._deviceConfig.mode !== null ? self._deviceConfig.mode + '\\n' : '\\n'
 						return {
 							text: out.text,
 						}
