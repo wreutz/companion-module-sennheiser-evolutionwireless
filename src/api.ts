@@ -18,8 +18,9 @@ export function initConnection(self: evolutionInstance): void {
 		self.updateStatus(InstanceStatus.Connecting, 'Connecting') // Set status to Connecting
 
 		// self._socket = self.createSharedUdpSocket('udp4', responseSocketEvents)
-
-		self._socket = new UDPHelper(self.config.host, parseInt(self.config.port), { bind_port: parseInt(self.config.port) })
+		
+		// self._socket = new UDPHelper(self.config.host, parseInt(self.config.port), { bind_port: parseInt(self.config.port) })
+		self._socket = new UDPHelper(self.config.host, parseInt(self.config.port))
 
 		self._socket.on('error', (err: any) => {
 			self.device.deviceConnected = false
@@ -38,7 +39,6 @@ export function initConnection(self: evolutionInstance): void {
 		})
 
 		self._socket.on('data', (msg: Buffer) => {
-			console.log('got data')
 			processData(self, msg.toString())
 		})
 
